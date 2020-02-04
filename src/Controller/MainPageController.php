@@ -13,7 +13,7 @@ class MainPageController extends AbstractController
     public function index()
     {
 
-        //Main Pagedd
+        //Main Page
         return $this->render('main_page/index.html.twig', ['controller_name' => 'MainPageController',
         ]);
     }

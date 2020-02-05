@@ -4,6 +4,7 @@
 {% endblock %}
 
 {% block body %}
+	{{ encore_entry_script_tags('js/main_page/main_page') }}
 	<style>
 		.example-wrapper {
 			margin: 1em auto;
@@ -19,7 +20,8 @@
 
 	<div class="example-wrapper">
 		<h1>Hello
-			{{ controller_name }}! ✅</h1>
+			{{ controller_name }}!
+		</h1>
 
 		This friendly message is coming from:
 		<ul>
@@ -35,5 +37,6 @@
 			</li>
 		</ul>
 	</div>
-	<button type="button" class="btn btn-success">Success</button>
+	<button id="boton1" type="button" class="btn btn-success">Success</button>
+	<button id="boton2" type="button" class="btn btn-success">Success</button>
 {% endblock %}

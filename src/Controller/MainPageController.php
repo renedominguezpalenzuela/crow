@@ -13,6 +13,7 @@ class MainPageController extends AbstractController
     public function index()
     {
 
+        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
         //Main Pagesss
         return $this->render('main_page/index.html.twig', ['controller_name' => 'MainPageController',
         ]);

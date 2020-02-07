@@ -25,8 +25,7 @@ Encore
      */
     .addEntry('js/app', './assets/js/app.js')
     .addEntry('js/main_page/main_page', ['./assets/js/main_page/main_page.js','./assets/js/main_page/otro.js'])
-    //.addEntry('js/main_page/main_page', './assets/js/main_page/otro.js')
-    .addStyleEntry('css/app', './assets/css/global.scss')
+    .addStyleEntry('css/global', './assets/css/global.scss')
     // .addEntry('page1', './assets/js/page1.js')
     // .addEntry('page2', './assets/js/page2.js')
 

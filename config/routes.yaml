@@ -1,3 +1,16 @@
 index:
     path: /
     controller: App\Controller\MainPageController::index
+
+
+
+#I use this to redirect all non-existent route:
+
+anything:
+    path:     /{mypath}
+    defaults:
+        _controller: FrameworkBundle:Redirect:urlRedirect
+        path: /mainpage #change this to whatever path
+        permanent: true
+    requirements:
+        mypath: ".+"

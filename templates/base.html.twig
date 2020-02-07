@@ -8,15 +8,19 @@
 				Welcome!
 			{% endblock %}
 		</title>
+
 		{% block stylesheets %}
-			{{ encore_entry_link_tags('css/app') }}
+			{{ encore_entry_link_tags('css/global') }}
 		{% endblock %}
 	</head>
 
 	<body>
-		{% block body %}
-			{{ encore_entry_script_tags('js/app') }}
-		{% endblock %}
+
+		{% block body %}{% endblock %}
+	
+		{{ encore_entry_script_tags('js/app') }}
+
+
 		{% block javascripts %}{% endblock %}
 	</body>
 

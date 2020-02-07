@@ -1,0 +1,78 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Log in!
+{% endblock %}
+
+{% block body %}
+
+
+	<div class="row">
+		<div class="col-md-8">
+
+
+			<div class="card">
+				<div class="card-header card-header-info">
+					<h3 class="card-title">Login</h3>
+					{#<p class="card-category">Welcome gamer</p>#}
+				</div>
+				<div class="card-body">
+
+					<form method="POST" action="{{ path('login') }}">
+						<input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+						{#<input type="hidden" name="_target_path" value="/player-army"/>#}
+						<div class="row">
+							<div class="col-md-3">
+								<div class="form-group">
+									<label class="bmd-label-floating">User Name</label>
+									{#<input type="text" class="form-control" name="_username" id="username" autocomplete="off">#}
+									<input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autofocus required  autocomplete="off">
+								</div>
+							</div>
+							<div class="col-md-4">
+								<div class="form-group">
+									<label class="bmd-label-floating">Password</label>
+									<input type="password" class="form-control" name="password" id="password" autofocus required autocomplete="off">
+
+								</div>
+							</div>
+
+						</div>
+						<button type="submit" class="btn btn-primary">Go!</button>
+						<a class="btn btn-info" href="{{ path('user_new') }}">Register</a>
+						<div class="clearfix"></div>
+						{% if app.user %}
+							<div class="mb-3">
+								You are logged in as
+								{{ app.user.username }},
+								<a href="{{ path('app_logout') }}">Logout</a>
+							</div>
+						{% endif %}
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	
+{% endblock %}
+
+{% block javascripts %}
+	<script>
+		{% if error %}
+$.notify({
+message: '{{ error.messageKey|trans(error.messageData, 'security') }}'
+}, {
+type: 'danger',
+timer: 3000,
+placement: {
+from: 'top',
+align: 'right'
+}
+});{% endif %}
+
+
+//  $('#main_body').removeClass('fondo_login_page');
+//$('#main_body').addClass('fondo_login_page');
+	</script>
+{% endblock %}

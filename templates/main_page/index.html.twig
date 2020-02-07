@@ -1,10 +1,13 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}Hello MainPageController!
+
 {% endblock %}
 
+
 {% block body %}
-	{{ encore_entry_script_tags('js/main_page/main_page') }}
+
+
 	<style>
 		.example-wrapper {
 			margin: 1em auto;
@@ -39,4 +42,13 @@
 	</div>
 	<button id="boton1" type="button" class="btn btn-success">Success</button>
 	<button id="boton2" type="button" class="btn btn-success">Success</button>
+	<button id="boton3" type="button" class="btn btn-success">Logout</button>
+
+{% endblock %}
+
+{% block javascripts %}
+
+	
+	<script src="{{asset('build/js/main_page/main_page.js')}}"></script> 
+	
 {% endblock %}

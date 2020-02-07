@@ -3,16 +3,12 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-//use Symfony\Component\Security\Core\User\UserInterface;
-use Symfony\Component\HttpFoundation\File\UploadedFile;
-use Symfony\Component\Validator\Constraints as Assert;
-use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
- * @UniqueEntity(fields={"email","username"})
  */
-class User implements UserInterface, \Serializable
+class User implements UserInterface
 {
     /**
      * @ORM\Id()
@@ -34,53 +30,8 @@ class User implements UserInterface, \Serializable
     /**
      * @var string The hashed password
      * @ORM\Column(type="string")
-	 * @Assert\NotBlank()
      */
     private $password;
-	
-	/**
-     * @ORM\Column(type="string", length=150, nullable=true, unique=true)
-     * @Assert\NotBlank()
-     * @var type
-     */
-    private $username;
-	
-	 /**
-     *
-     * @var type 
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $security;
-
-    /**
-     *
-     * @var type 
-     * @ORM\Column(type="boolean")
-     */
-    private $active;
-
-
-
-
-     /**
-     * @ORM\Column(name="gold", type="integer")
-     * @Assert\NotBlank()
-     */
-    private $gold = 500000;
-
-    /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Kingdom", inversedBy="users")
-     * @ORM\JoinColumn(nullable=true)
-     */
-    private $kingdom;
-
-    /**
-     * @ORM\Column(type="integer")
-     */
-    private $userpoints=0;
-
-	
-	
 
     public function getId(): ?int
     {
@@ -159,44 +110,4 @@ class User implements UserInterface, \Serializable
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
     }
-	
-	
-    public function getGold(): ?int
-    {
-        return $this->gold;
-    }
-
-    public function setGold(int $gold): self
-    {
-        $this->gold = $gold;
-
-        return $this;
-    }
-
-    public function getKingdom(): ?Kingdom
-    {
-        return $this->kingdom;
-    }
-
-    public function setKingdom(?Kingdom $kingdom): self
-    {
-        $this->kingdom = $kingdom;
-
-        return $this;
-    }
-
-    public function getUserpoints(): ?int
-    {
-        return $this->userpoints;
-    }
-
-    public function setUserpoints(int $userpoints): self
-    {
-        $this->userpoints = $userpoints;
-
-        return $this;
-    }
-
-
-
 }

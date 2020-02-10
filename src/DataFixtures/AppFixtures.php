@@ -189,14 +189,15 @@ class AppFixtures extends Fixture
 
 
         //------------------------------------------------------------------------
-        //Usuario Admin
+        //Usuario Admin, pass="admin"
         //------------------------------------------------------------------------
         
        //actualizando el password
        $user = new User();
-       $user->setUsername("admin");
-       $user->setName("admin");
-       $user->setRole("ROLE_ADMIN");
+       $user->setEmail("admin@correo.cu");
+       //$user->setName("admin");
+       $user->setRoles(["ROLE_ADMIN"]);
+       $user->setActive(1);
        
        $encoded = $this->encoder->encodePassword($user, "admin");
        $user->setPassword($encoded);

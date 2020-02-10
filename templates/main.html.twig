@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello MainPageController!
+
+{% endblock %}
+
+
+{% block body %}
+
+	<h1>MAIN Page</h1>
+
+
+	<button id="boton1" type="button" class="btn btn-success">Success</button>
+	<button id="boton2" type="button" class="btn btn-success">Success</button>
+	<button id="boton3" type="button" class="btn btn-success">Logout</button>
+
+{% endblock %}
+
+
+
+{% block javascripts %}
+
+
+	<script src="{{asset('build/js/main_page/main_page.js')}}"></script>
+
+{% endblock %}

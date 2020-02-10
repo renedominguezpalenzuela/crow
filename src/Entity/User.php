@@ -4,12 +4,24 @@ namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Validator\Constraints as Assert;
+
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
  */
 class User implements UserInterface
 {
+
+
+    public function __construct() 
+    {
+        $this->active = true;
+       // $this->security = sha1(md5(uniqid()));
+       // $this->role = 'ROLE_USER';
+    }
+
+
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
@@ -32,6 +44,33 @@ class User implements UserInterface
      * @ORM\Column(type="string")
      */
     private $password;
+
+    
+    /**
+     *
+     * @var type 
+     * @ORM\Column(type="boolean")
+     */
+    private $active;
+
+
+     /**
+     * @ORM\Column(name="gold", type="integer")
+     * @Assert\NotBlank()
+     */
+    private $gold = 500000;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Kingdom", inversedBy="users")
+     * @ORM\JoinColumn(nullable=true)
+     */
+    private $kingdom;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $userpoints=0;
+
 
     public function getId(): ?int
     {
@@ -109,5 +148,102 @@ class User implements UserInterface
     {
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
+    }
+
+    /**
+     * Get the value of active
+     *
+     * @return  type
+     */ 
+   /* public function getActive()
+    {
+        return $this->active;
+    }*/
+
+    /**
+     * Set the value of active
+     *
+     * @param  type  $active
+     *
+     * @return  self
+     */ 
+    /*public function setActive(type $active)
+    {
+        $this->active = $active;
+
+        return $this;
+    }*/
+
+
+    public function setActive(bool $active): ?self
+    {
+        $this->active = $active;
+        
+        return $this;
+    }
+    
+    public function getActive(): ?bool 
+    {
+        return $this->active;
+    }
+
+    /**
+     * Get the value of gold
+     */ 
+    public function getGold()
+    {
+        return $this->gold;
+    }
+
+    /**
+     * Set the value of gold
+     *
+     * @return  self
+     */ 
+    public function setGold($gold)
+    {
+        $this->gold = $gold;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of kingdom
+     */ 
+    public function getKingdom()
+    {
+        return $this->kingdom;
+    }
+
+    /**
+     * Set the value of kingdom
+     *
+     * @return  self
+     */ 
+    public function setKingdom($kingdom)
+    {
+        $this->kingdom = $kingdom;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of userpoints
+     */ 
+    public function getUserpoints()
+    {
+        return $this->userpoints;
+    }
+
+    /**
+     * Set the value of userpoints
+     *
+     * @return  self
+     */ 
+    public function setUserpoints($userpoints)
+    {
+        $this->userpoints = $userpoints;
+
+        return $this;
     }
 }

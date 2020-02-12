@@ -1,4 +1,4 @@
-{% extends 'main.html.twig' %}
+{% extends 'mainmenu.html.twig' %}
 
 {% block title %}Hello PlayerArmyController!{% endblock %}
 
@@ -6,12 +6,28 @@
 {{ parent() }}
 
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/wamp64/www/crow/src/Controller/PlayerArmyController.php'|file_link(0) }}">src/Controller/PlayerArmyController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/wamp64/www/crow/templates/player_army/index.html.twig'|file_link(0) }}">templates/player_army/index.html.twig</a></code></li>
-    </ul>
-   <h1> Contenido </h1>
+   <h1> Player Army </h1>
+{% endblock %}
+
+
+{% block javascripts %}
+<script>
+	   {% if error %}
+            $.notify({
+                       message: '{{ error }}'
+                     }, {
+                        type: 'danger',
+                        timer: 3000,
+                        placement: {
+                                      from: 'top',
+                                      align: 'right'
+                                   }
+                    });
+		{% endif %}
+
+//  $('#main_body').removeClass('fondo_login_page');
+$('#main_body').addClass('fondo_login_page');
+</script>
 {% endblock %}
 
 

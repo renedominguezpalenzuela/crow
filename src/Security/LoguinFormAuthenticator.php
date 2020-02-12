@@ -40,7 +40,7 @@ class LoguinFormAuthenticator extends AbstractFormLoginAuthenticator implements 
     public function supports(Request $request)
     {
         return 'login' === $request->attributes->get('_route')
-            && $request->isMethod('POST');
+        && $request->isMethod('POST');
     }
 
     public function getCredentials(Request $request)
@@ -65,11 +65,17 @@ class LoguinFormAuthenticator extends AbstractFormLoginAuthenticator implements 
             throw new InvalidCsrfTokenException();
         }
 
+        //Buscar por el email
         $user = $this->entityManager->getRepository(User::class)->findOneBy(['email' => $credentials['email']]);
+
+        //buscar por el nombre de usuario
+        if (!$user) {
+            $user = $this->entityManager->getRepository(User::class)->findOneBy(['username' => $credentials['email']]);
+        }
 
         if (!$user) {
             // fail authentication with a custom error
-            throw new CustomUserMessageAuthenticationException('Email could not be found.');
+            throw new CustomUserMessageAuthenticationException('User could not be found.');
         }
 
         return $user;
@@ -90,8 +96,8 @@ class LoguinFormAuthenticator extends AbstractFormLoginAuthenticator implements 
 
     public function onAuthenticationSuccess(Request $request, TokenInterface $token, $providerKey)
     {
-      /*  if ($targetPath = $this->getTargetPath($request->getSession(), $providerKey)) {
-            return new RedirectResponse($targetPath);
+        /*  if ($targetPath = $this->getTargetPath($request->getSession(), $providerKey)) {
+        return new RedirectResponse($targetPath);
         }*/
 
         return new RedirectResponse($this->urlGenerator->generate('player_army'));

@@ -1,0 +1,70 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	Hello MainPageController!
+
+{% endblock %}
+{% block stylesheets %}
+
+	<link rel="stylesheet" href="{{ asset('librerias/css/mainmenu.css') }}">
+{% endblock %}
+
+
+{% block body %}
+
+
+	{#MENU#}
+
+
+
+<nav class="navbar navbar-expand-lg navbar-dark ">
+  {# <a class="navbar-brand" href="#">Menu Bar</a> #}
+
+  
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+   
+      <li class="nav-item">
+        <a class="nav-link" href="{{url('player_army')}}">Player Army</a>
+      </li>
+            <li class="nav-item">
+        <a class="nav-link" href="{{url('login')}}">Kingdom Court</a>
+      </li>
+            <li class="nav-item">
+        <a class="nav-link" href="{{url('login')}}">World Map</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Dropdown
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="#">Action</a>
+          <a class="dropdown-item" href="#">Another action</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">Something else here</a>
+        </div>
+      </li>
+
+	
+    </ul>
+  </div>
+</nav>
+
+
+{#	<button id="boton1" type="button" class="btn btn-success">Success</button>
+	<button id="boton2" type="button" class="btn btn-success">Success</button>
+	<button id="boton3" type="button" class="btn btn-success">Logout</button>#}
+
+{% endblock %}
+
+
+{% block javascripts %}
+
+
+	<script src="{{asset('librerias/js/mainmenu/mainmenu.js')}}"></script>
+
+{% endblock %}

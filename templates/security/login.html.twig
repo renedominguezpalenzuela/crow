@@ -10,13 +10,15 @@
 		/*Imagen de fondo del formulario de la pagina de login*/
 		.fondo_formulario_login_page {
 			position: relative;
-			background: url("{{ asset('img/login_form_back.png') }}") center center;
+			background: url("{{ asset('img/login_form_back.png') }}") top center;
 			width: 100%;
 			height: 100%;
 			background-size: contain;
 			overflow: hidden;
 			background-repeat: no-repeat;
 		}
+
+		label.login { color: red; }
 
 	</style>
 {% endblock %}
@@ -32,26 +34,26 @@
 			class="col-md-4">
 
 			
-			<div class="container h-100 fondo_formulario_login_page">
-				<div class="row h-100 justify-content-center align-items-center">
+			<div class="container h-100 fondo_formulario_login_page mt-5">
+				<div class="row h-100 justify-content-center align-items-top mt-5">
 					<form method="POST" action="{{ path('login') }}" class="form-horizontal mt-4">
 
 						<input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
 						<input type="hidden" name="_target_path" value="/player-army"/>
 
-						<div class="form-group">
-							<label class="bmd-label-floating">User Name</label>
-							<input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autofocus required autocomplete="off">
+						<div class="form-group m-3">
+							<label class="bmd-label-floating">User Name or Mail</label>
+							<input type="text"  name="email" id="inputEmail" class="form-control label" autofocus required autocomplete="off">
 						</div>
 
-						<div class="form-group">
+						<div class="form-group m-3">
 							<label class="bmd-label-floating">Password</label>
 							<input type="password" class="form-control" name="password" id="password" autofocus required autocomplete="off">
 
 						</div>
+				       <div class="mt-5">
 
-
-						<button type="submit" class="btn btn-primary">Go!</button>
+						<button type="submit" class="btn btn-primary ">Go!</button>
 						<a class="btn btn-info" href="{{ path('user_new') }}">Register</a>
 						
 						{% if app.user %}
@@ -63,6 +65,7 @@
 						{% endif %}
 
 						<div class="clearfix"></div>
+						</div>
 
 
 					</form>
@@ -79,67 +82,24 @@
 	</div>
 </div>
 
-
-{#
-								<div class="row">
-									<div class="col-md-4">
-							
-							
-										<div class="card">
-											<div class="card-header card-header-info">
-												<h3 class="card-title">Login</h3>
-											
-											</div>
-											<div class="card-body">
-							
-												<form method="POST" action="{{ path('login') }}">
-													<input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
-												
-													<div class="row">
-														<div class="col-md-3">
-															<div class="form-group">
-																<label class="bmd-label-floating">User Name</label>
-																
-																<input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autofocus required  autocomplete="off">
-															</div>
-														</div>
-														<div class="col-md-3">
-															<div class="form-group">
-																<label class="bmd-label-floating">Password</label>
-																<input type="password" class="form-control" name="password" id="password" autofocus required autocomplete="off">
-							
-															</div>
-														</div>
-							
-													</div>
-													<button type="submit" class="btn btn-primary">Go!</button>
-													<a class="btn btn-info" href="{{ path('user_new') }}">Register</a>
-													<div class="clearfix"></div>
-													{% if app.user %}
-														<div class="mb-3">
-															You are logged in as
-															{{ app.user.username }},
-															<a href="{{ path('app_logout') }}">Logout</a>
-														</div>
-													{% endif %}
-												</form>
-											</div>
-										</div>
-									</div>
-								</div>#}{% endblock %}{% block javascripts %}
+{% endblock %}
+{% block javascripts %}
 <script>
-	{% if error %}
-$.notify({
-message: '{{ error.messageKey|trans(error.messageData, 'security') }}'
-}, {
-type: 'danger',
-timer: 3000,
-placement: {
-from: 'top',
-align: 'right'
-}
-});{% endif %}
+	   {% if error %}
+            $.notify({
+                       message: '{{ error.messageKey|trans(error.messageData, 'security') }}'
+                     }, {
+                        type: 'danger',
+                        timer: 3000,
+                        placement: {
+                                      from: 'top',
+                                      align: 'right'
+                                   }
+                    });
+		{% endif %}
 
 //  $('#main_body').removeClass('fondo_login_page');
 $('#main_body').addClass('fondo_login_page');
-</script>{% endblock %}
+</script>
+
+{% endblock %}

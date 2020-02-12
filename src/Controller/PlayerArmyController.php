@@ -12,8 +12,10 @@ class PlayerArmyController extends AbstractController
      */
     public function index()
     {
+
+        $error=null;
         return $this->render('player_army/index.html.twig', [
-            'controller_name' => 'PlayerArmyController',
+            'controller_name' => 'PlayerArmyController', 'error' =>  $error
         ]);
     }
 }

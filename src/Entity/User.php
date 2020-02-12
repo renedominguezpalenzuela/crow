@@ -29,8 +29,23 @@ class User implements UserInterface
      */
     private $id;
 
+    
+    /**
+     * @ORM\Column(type="string", length=180)
+     * @Assert\NotBlank()
+     */
+    private $name;
+
+    
     /**
      * @ORM\Column(type="string", length=180, unique=true)
+     * @Assert\NotBlank()
+     */
+    private $username;
+
+    /**
+     * @ORM\Column(type="string", length=180, unique=true)
+     * @Assert\NotBlank()
      */
     private $email;
 
@@ -89,14 +104,14 @@ class User implements UserInterface
         return $this;
     }
 
-    /**
-     * A visual identifier that represents this user.
-     *
-     * @see UserInterface
-     */
-    public function getUsername(): string
-    {
-        return (string) $this->email;
+    public function setUsername($username) {
+        $this->username = $username;
+
+        return $this;
+    }
+
+    public function getUsername() {
+        return $this->username;
     }
 
     /**
@@ -243,6 +258,26 @@ class User implements UserInterface
     public function setUserpoints($userpoints)
     {
         $this->userpoints = $userpoints;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of name
+     */ 
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * Set the value of name
+     *
+     * @return  self
+     */ 
+    public function setName($name)
+    {
+        $this->name = $name;
 
         return $this;
     }

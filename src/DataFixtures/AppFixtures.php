@@ -194,8 +194,9 @@ class AppFixtures extends Fixture
         
        //actualizando el password
        $user = new User();
-       $user->setEmail("admin@correo.cu");
-       //$user->setName("admin");
+       $user->setEmail("admin@gmail.com");
+       $user->setName("administrator");
+       $user->setUsername("admin");
        $user->setRoles(["ROLE_ADMIN"]);
        $user->setActive(1);
        

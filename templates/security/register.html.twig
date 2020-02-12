@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello RegisterController!
+{% endblock %}
+
+{% block body %}
+
+<div
+			class="col-md-4">
+	<div class="card">
+		<div class="card-header card-header-primary">
+			<h4 class="card-title">Register</h4>
+
+		</div>
+
+		
+
+
+		<div class="card-body">
+			{{ form_start(form) }}
+			{{ form_widget(form) }}
+			<button class="btn">{{ button_label|default('Save') }}</button>
+			{{ form_end(form) }}
+		</div>
+	</div>
+	</div>
+
+
+
+
+
+{% endblock %}
+
+
+
+
+{% block javascripts %}
+<script>
+	   {% if error %}
+            $.notify({
+                       message: '{{ error}}'
+                     }, {
+                        type: 'danger',
+                        timer: 3000,
+                        placement: {
+                                      from: 'top',
+                                      align: 'right'
+                                   }
+                    });
+		{% endif %}
+
+$(document).ready(function () {
+
+	$('#main_body').addClass('fondo_login_page');
+});
+</script>
+{% endblock %}

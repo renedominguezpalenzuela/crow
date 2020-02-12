@@ -3,17 +3,25 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-//use Symfony\Component\Security\Core\User\UserInterface;
-use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
-use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
- * @UniqueEntity(fields={"email","username"})
  */
-class User implements UserInterface, \Serializable
+class User implements UserInterface
 {
+
+
+    public function __construct() 
+    {
+        $this->active = true;
+       // $this->security = sha1(md5(uniqid()));
+       // $this->role = 'ROLE_USER';
+    }
+
+
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
@@ -21,8 +29,23 @@ class User implements UserInterface, \Serializable
      */
     private $id;
 
+    
+    /**
+     * @ORM\Column(type="string", length=180)
+     * @Assert\NotBlank()
+     */
+    private $name;
+
+    
     /**
      * @ORM\Column(type="string", length=180, unique=true)
+     * @Assert\NotBlank()
+     */
+    private $username;
+
+    /**
+     * @ORM\Column(type="string", length=180, unique=true)
+     * @Assert\NotBlank()
      */
     private $email;
 
@@ -34,32 +57,16 @@ class User implements UserInterface, \Serializable
     /**
      * @var string The hashed password
      * @ORM\Column(type="string")
-	 * @Assert\NotBlank()
      */
     private $password;
-	
-	/**
-     * @ORM\Column(type="string", length=150, nullable=true, unique=true)
-     * @Assert\NotBlank()
-     * @var type
-     */
-    private $username;
-	
-	 /**
-     *
-     * @var type 
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $security;
 
+    
     /**
      *
      * @var type 
      * @ORM\Column(type="boolean")
      */
     private $active;
-
-
 
 
      /**
@@ -79,8 +86,6 @@ class User implements UserInterface, \Serializable
      */
     private $userpoints=0;
 
-	
-	
 
     public function getId(): ?int
     {
@@ -99,14 +104,14 @@ class User implements UserInterface, \Serializable
         return $this;
     }
 
-    /**
-     * A visual identifier that represents this user.
-     *
-     * @see UserInterface
-     */
-    public function getUsername(): string
-    {
-        return (string) $this->email;
+    public function setUsername($username) {
+        $this->username = $username;
+
+        return $this;
+    }
+
+    public function getUsername() {
+        return $this->username;
     }
 
     /**
@@ -159,44 +164,121 @@ class User implements UserInterface, \Serializable
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
     }
-	
-	
-    public function getGold(): ?int
+
+    /**
+     * Get the value of active
+     *
+     * @return  type
+     */ 
+   /* public function getActive()
+    {
+        return $this->active;
+    }*/
+
+    /**
+     * Set the value of active
+     *
+     * @param  type  $active
+     *
+     * @return  self
+     */ 
+    /*public function setActive(type $active)
+    {
+        $this->active = $active;
+
+        return $this;
+    }*/
+
+
+    public function setActive(bool $active): ?self
+    {
+        $this->active = $active;
+        
+        return $this;
+    }
+    
+    public function getActive(): ?bool 
+    {
+        return $this->active;
+    }
+
+    /**
+     * Get the value of gold
+     */ 
+    public function getGold()
     {
         return $this->gold;
     }
 
-    public function setGold(int $gold): self
+    /**
+     * Set the value of gold
+     *
+     * @return  self
+     */ 
+    public function setGold($gold)
     {
         $this->gold = $gold;
 
         return $this;
     }
 
-    public function getKingdom(): ?Kingdom
+    /**
+     * Get the value of kingdom
+     */ 
+    public function getKingdom()
     {
         return $this->kingdom;
     }
 
-    public function setKingdom(?Kingdom $kingdom): self
+    /**
+     * Set the value of kingdom
+     *
+     * @return  self
+     */ 
+    public function setKingdom($kingdom)
     {
         $this->kingdom = $kingdom;
 
         return $this;
     }
 
-    public function getUserpoints(): ?int
+    /**
+     * Get the value of userpoints
+     */ 
+    public function getUserpoints()
     {
         return $this->userpoints;
     }
 
-    public function setUserpoints(int $userpoints): self
+    /**
+     * Set the value of userpoints
+     *
+     * @return  self
+     */ 
+    public function setUserpoints($userpoints)
     {
         $this->userpoints = $userpoints;
 
         return $this;
     }
 
+    /**
+     * Get the value of name
+     */ 
+    public function getName()
+    {
+        return $this->name;
+    }
 
+    /**
+     * Set the value of name
+     *
+     * @return  self
+     */ 
+    public function setName($name)
+    {
+        $this->name = $name;
 
+        return $this;
+    }
 }

@@ -1,3 +1,65 @@
+
+.contenedor {
+  display: grid;
+  height: 100vh;
+  grid-template-columns: repeat(14,1fr);
+  /*grid-template-rows: repeat(3,1fr);*/
+  grid-template-rows: 12% 2% 6% 2% 78%;
+ /* gap: 1em;
+  row-gap: 2em;*/
+
+}
+
+
+.top {
+ 
+    grid-column: 1/15;
+    grid-row: 1/3; 
+    justify-self:center;
+    /*align-self: center;*/
+
+}
+
+.menu {
+ 
+  grid-column: 1/15;
+  grid-row:2/5; 
+  z-index: 10;
+  justify-self:center;
+  /*align-self: center;*/
+  background: #d609f1;
+
+}
+
+.main {
+ 
+  grid-column: 1/15;
+  grid-row: 4/6; 
+  justify-self:center;
+  /*align-self: center;*/
+
+}
+
+
+
+/* Fuente  */
+@font-face {
+  font-family: breathe_fire;
+  src:url("../../fonts/BREATHE_FIRE.OTF");
+}
+
+/* Clase que debe asignarse a un elemento para cambiar la letra */
+.letra_breathe_fire {
+  font-family: breathe_fire;
+}
+
+.item {
+   background: #ecf0f1;
+  
+}
+
+
+
 /* Underline Effect*/
 .nav-item {
     position: relative;

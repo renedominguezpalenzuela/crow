@@ -15,12 +15,109 @@
 
 	{#MENU#}
 
-
-
 <nav class="navbar navbar-expand-lg navbar-dark ">
-  {# <a class="navbar-brand" href="#">Menu Bar</a> #}
 
-  
+
+	<div class="container  ">
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="true" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+
+		<div class="collapse navbar-collapse flex-column align-items-start" id="navbarCollapse">
+			<!-- navbar1 -->
+
+			<div class="navbar-nav mb-lg-0 ">
+				<a class="navbar-brand" href="#">
+					<img id="avatar" src="{{ asset('img/avatar.jpg') }}" alt="Avatar" style="width:30px;">
+				</a>
+				<small>
+					<table>
+						<tr>
+							<td>
+								<span>User :
+								</span>
+								<span>-
+								</span>
+							</td>
+							<td style="padding-right:20px"></td>
+
+							<td>
+								<span>Gold :
+								</span>
+								<span>0</span>
+							</td>
+							<td style="padding-right:20px"></td>
+
+
+							<td>
+								<span>User Points :
+								</span>
+								<span>0</span>
+							</td>
+							<td style="padding-right:20px"></td>
+							<td>
+								<span>Kingdom :
+								</span>
+								<span>-</span>
+							</td>
+							<td style="padding-right:20px"></td>
+							<td>
+								<span>Kingdom Points :
+								</span>
+								<span>-</span>
+							</td>
+						</tr>
+
+
+					</table>
+				</small>
+
+
+			</div>
+
+
+			<!-- navbar2 -->
+			{#	<ul class="navbar-nav mt-0 ">#}
+			<ul class="navbar-nav mt-0 mr-auto">
+
+				<li class="nav-item">
+					<a class="nav-link" href="{{url('player_army')}}">Player Army</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="{{url('kingdomcourt')}}">Kingdom Court</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="{{url('map')}}">World Map</a>
+				</li>
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						Dropdown
+					</a>
+					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+						<a class="dropdown-item" href="#">Action</a>
+						<a class="dropdown-item" href="#">Another action</a>
+						<div class="dropdown-divider"></div>
+						<a class="dropdown-item" href="#">Something else here</a>
+					</div>
+				</li>
+
+
+			</ul>
+		</div>
+	</div>
+
+
+</nav>
+
+
+
+
+
+{#
+<nav class="navbar navbar-expand-lg navbar-dark ">
+
+
+ 
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -51,8 +148,16 @@
 
 	
     </ul>
+    
   </div>
+
+
+
+ 
+ 
 </nav>
+#}
+
 
 
 {#	<button id="boton1" type="button" class="btn btn-success">Success</button>

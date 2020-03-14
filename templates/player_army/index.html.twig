@@ -11,21 +11,9 @@
 
 
 {% block javascripts %}
-<script>
-	   {% if error %}
-            $.notify({
-                       message: '{{ error }}'
-                     }, {
-                        type: 'danger',
-                        timer: 3000,
-                        placement: {
-                                      from: 'top',
-                                      align: 'right'
-                                   }
-                    });
-		{% endif %}
 
-//  $('#main_body').removeClass('fondo_login_page');
+<script>
+
 $('#main_body').addClass('fondo_login_page');
 </script>
 {% endblock %}

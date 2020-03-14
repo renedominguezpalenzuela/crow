@@ -1,0 +1,33 @@
+{% extends 'mainmenu.html.twig' %}
+
+{% block title %}Hello MapController!
+{% endblock %}
+
+{% block body %}
+	{{ parent() }}
+
+
+	
+
+        <div id='mapcontainer' style="height:60%;width:100%"></div>
+{% endblock %}
+
+
+{% block javascripts %}
+
+    <script>
+      assets = {
+             avatar : "{{ asset('img/head.jpg') }}",
+             mapatileset:  "{{ asset('maps/map01/terrain_atlas.png') }}",
+             mapa:"{{ asset('maps/map01/mapa01.json.tmx') }}" 
+      }
+    
+
+    </script>
+
+	<script src="{{ asset('librerias/js/phaser.min.js') }}"></script>
+    <script src="{{ asset('librerias/js/map/map1.js') }}"></script>
+    <script src="{{ asset('librerias/js/map/map.js') }}"></script>
+  
+
+{% endblock %}

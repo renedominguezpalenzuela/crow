@@ -84,10 +84,12 @@
 
 {% endblock %}
 {% block javascripts %}
+
+{# {{ parent() }} #}
 <script>
 	   {% if error %}
             $.notify({
-                       message: '{{ error.messageKey|trans(error.messageData, 'security') }}'
+                       message: 'Loguin error: '+'{{ error.messageKey|trans(error.messageData, 'security') }}'
                      }, {
                         type: 'danger',
                         timer: 3000,
@@ -97,6 +99,7 @@
                                    }
                     });
 		{% endif %}
+		
 
 //  $('#main_body').removeClass('fondo_login_page');
 $('#main_body').addClass('fondo_login_page');

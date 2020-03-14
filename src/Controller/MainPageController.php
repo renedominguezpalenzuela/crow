@@ -15,7 +15,10 @@ class MainPageController extends AbstractController
 
         $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
         //Main Pagesss
-        return $this->render('main.html.twig', ['controller_name' => 'MainPageController',
+        $error=null;
+        return $this->render('player_army/index.html.twig', [
+            'controller_name' => 'PlayerArmyController', 'error' =>  $error
         ]);
+        //return $this->render('main.html.twig', ['controller_name' => 'MainPageController',   ]);
     }
 }

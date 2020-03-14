@@ -35,20 +35,9 @@
 
 
 {% block javascripts %}
-<script>
-	   {% if error %}
-            $.notify({
-                       message: '{{ error}}'
-                     }, {
-                        type: 'danger',
-                        timer: 3000,
-                        placement: {
-                                      from: 'top',
-                                      align: 'right'
-                                   }
-                    });
-		{% endif %}
 
+<script>
+	
 $(document).ready(function () {
 
 	$('#main_body').addClass('fondo_login_page');

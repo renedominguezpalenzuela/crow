@@ -1,21 +1,31 @@
 {% extends 'mainmenu.html.twig' %}
 
-{% block title %}Player Army{% endblock %}
+{% block title %}
+  Player Army
+{% endblock %}
 
-{% block body %}
-{# {{ parent() }}#}
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{ asset('librerias/css/mainmenu.css') }}">
+{% endblock %}	
+
+{% block main_body %}
+ 
+<div class="principal">
+sss
+</div>
 
 
-   <h1 class="letra_breathe_fire item"> Player Army </h1>
+
+
 {% endblock %}
 
 
 {% block javascripts %}
 
-<script>
+   <script>
+      //$('#main_body').addClass('fondo_login_page');
+   </script>
 
-//$('#main_body').addClass('fondo_login_page');
-</script>
 {% endblock %}
 
 

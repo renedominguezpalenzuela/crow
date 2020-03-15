@@ -2,37 +2,74 @@
 
 {% block title %}
 	Hello MainPageController!
+{% endblock %}
+
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{ asset('librerias/css/mainmenu.css') }}">
+{% endblock %}	
+
+{% block body %}
+	<div class="contenedor">
+
+		<div class="top item">
+			Top
+		</div>
+
+	
+		<div class="opciones">
+			<div class="contenedor_menu">
+
+					
+					<span class="opcion1 letra_breathe_fire">
+						<a class="underline-on-hover" href="{{url('player_army')}}">
+							Player Army
+						</a>
+					</span>
+
+					<span class="opcion2 letra_breathe_fire">
+				
+						<a class="underline-on-hover" href="{{url('map')}}">
+							World Map
+						</a>
+					</span>
+
+					<span class="opcion3 letra_breathe_fire">
+						<a class="underline-on-hover" href="{{url('kingdomcourt')}}">
+							Kingdom Court
+						</a>
+					</span>
+			
+			
+
+
+				
+			
+			</div>
+		</div>
+
+		{% block main_body %}
+		{% endblock %}
+			
+	</div>
 
 {% endblock %}
-{% block stylesheets %}
-
-	<link rel="stylesheet" href="{{ asset('librerias/css/mainmenu.css') }}">
-
-<div class="contenedor">
-
-	<div class="top item">
-		Top
-	</div>
-
-	<div class="menu ">
-		menu
-	</div>
-			
-	<div class="main item">
-			
-		{% endblock %}
-
-
-		{% block body %}
-
-		main
-	</div>
-</div>
 
 
 
 
 
+
+
+
+
+
+
+{% block javascripts %}
+
+
+	<script src="{{asset('librerias/js/mainmenu/mainmenu.js')}}"></script>
+
+	
 
 	{#MENU#}
 
@@ -185,13 +222,5 @@
 {#	<button id="boton1" type="button" class="btn btn-success">Success</button>
 	<button id="boton2" type="button" class="btn btn-success">Success</button>
 	<button id="boton3" type="button" class="btn btn-success">Logout</button>#}
-
-{% endblock %}
-
-
-{% block javascripts %}
-
-
-	<script src="{{asset('librerias/js/mainmenu/mainmenu.js')}}"></script>
 
 {% endblock %}

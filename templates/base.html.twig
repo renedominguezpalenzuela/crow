@@ -6,17 +6,16 @@
 		<title>
 			{% block title %}
 				Welcome!
-			{% endblock %}
+			{% endblock title %}
 		</title>
 
 
 		{{ encore_entry_link_tags('css/global') }}
 
-		<link rel="stylesheet" href="{{ asset('librerias/css/material-dashboard.css?v=2.1.0') }}">
-		<link rel="stylesheet" href="{{ asset('librerias/css/myestilos.css') }}"> 
+		<link rel="stylesheet" href="{{ asset('librerias/css/material-dashboard.min.css') }}">
+		<link rel="stylesheet" href="{{ asset('librerias/css/base.css') }}"> 
 	
-		{% block css %}
-		{% endblock %}
+	
 		{# 
 			<link rel="stylesheet" href="{{ asset('https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons') }}">
 			<link rel="stylesheet"  href="{{ asset('https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css') }}">
@@ -32,11 +31,11 @@
 		{% block body %}
 	
 	
-		{% endblock %}
+		{% endblock  body %}
 
 	
 		<script src="{{ asset('librerias/js/jquery.min.js') }}" type="text/javascript"></script>
-		<script src="{{ asset('librerias/js/popper.min.js') }}" type="text/javascript"></script>
+		 <script src="{{ asset('librerias/js/popper.min.js') }}" type="text/javascript"></script>
 
 		{{ encore_entry_script_tags('js/app') }}
 		{#<script src="{{ asset('librerias/js/core/bootstrap-material-design.min.js') }}" type="text/javascript"></script>#}
@@ -45,7 +44,18 @@
 		{#<script src="{{ asset('librerias/js/material-dashboard.js') }}" type="text/javascript"></script>#}
 
 
+
 	<script>
+
+	
+//--------------------------------------------------------------------------
+// Datos Globales
+//--------------------------------------------------------------------------
+
+
+"use strict";
+
+	
 			$(document).ready(function () {
 					{% for tipo, mensajes in app.session.flashbag.all() %}
 					{% for mensaje in mensajes %}
@@ -62,29 +72,17 @@
 						{% endfor %}
 					{% endfor %}
 
-					/*var url = window.location;
-					var element = $('li a').filter(function () {
-						return this.href == url || url.href.indexOf(this.href) == 0;
-					}).addClass('active').parent();
-
-					if (element.is('li')) {
-						element.parent().parent().addClass('active');
-						element.parent().addClass('in');
-						element.addClass('active');
-						element.children().removeClass('active');
-					}*/
-				});
-
-
-
-
+				
+		});
 		</script>
+
 
 		{% block javascripts %}
 		
+  
 
-		
-		{% endblock %}
+		{% endblock javascripts %}
+
 
 		
 	

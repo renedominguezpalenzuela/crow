@@ -174,8 +174,13 @@ class Battle
     //-----------------------------------------------------------------------------------------------
     //Parametros
     // $attacker_troops = array()
-    //
-    /*
+    //Devuelve
+    // Valor numerico: Fuerza del atacante
+    // Devuelve en parametros por referencia
+    // $attacker_troops  -- arreglo con nombre de tropas y usuario (para facilitar el trabajo en la vista)
+    // $attacker_building_damage_strength -- Fuerza de ataque contra los edificios
+
+    /**************************************************************************************************
     array (size=2)
     0 =>
     array (size=2)
@@ -199,21 +204,13 @@ class Battle
 
     public function getAttackerForceStrength(&$attacker_troops, &$attacker_building_damage_strength)
     {
-
         $attacking_force_strenght = 0;
         $new_attacker_troops = array();
         $attacker_building_damage_strength = 0;
 
         foreach ($attacker_troops as $unatropa) {
-
-
-           
             $id = $unatropa["troops_id"];
-
-           
-            $tropa = $this->em->getRepository(Troop::class)->find($id);
-
-        
+            $tropa = $this->em->getRepository(Troop::class)->find($id);      
             $tipoUnidad = $tropa->getUnitType();
             $total = $unatropa["total"];
 
@@ -228,13 +225,12 @@ class Battle
             $speed = $tipoUnidad->getSpeed();
 
             $attacker_building_damage_strength = $attacker_building_damage_strength + $damage * $total;
-
-            //var_dump($unatropa["name"] ." : ".$attack." : ".$defense." : ". $damage." : ".$speed );
-
             $attacking_force_strenght = $attacking_force_strenght + ($speed * $total * ($attack + $defense));
         }
 
         $attacker_troops = $new_attacker_troops;
+
+        var_dump($attacker_troops);
         return $attacking_force_strenght;
 
     }
@@ -316,6 +312,7 @@ class Battle
         $BFCV = 0; //Biggest Force Chance of Victory
         $staleChance = 0; //StaleMate Chance of Victory
 
+        //Determinando cual es la mayor fuerza si la del atacante o la del defensor
         if ($defending_force > $attacking_force) {
             $BF = $defending_force;
             $LF = $attacking_force;

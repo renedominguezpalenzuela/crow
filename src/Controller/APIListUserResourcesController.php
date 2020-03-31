@@ -69,6 +69,7 @@ class APIListUserResourcesController extends AbstractController
             'troops' => '',
             'troops_location' => '',
             'resources' => '',
+            'user_name'=>''
         ];
 
         $em = $this->getDoctrine()->getManager();
@@ -280,6 +281,7 @@ class APIListUserResourcesController extends AbstractController
         $arreglo_final['resources'] = array(
             'gold' => $user->getGold(),
             'user_points' => $user->getUserPoints(),
+            'user_name' => $user->getUsername()
         );
 
         //Respuesta

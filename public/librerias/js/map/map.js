@@ -1,6 +1,6 @@
 var config = {
-    //width: "100%",
-    //height:"100%",
+    width: "100%",
+    height:"100vh",
     backgroundColor: 0x0000FF,
     parent: 'mapcontainer',
     scene: [Map01]

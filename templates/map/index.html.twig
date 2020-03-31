@@ -1,16 +1,27 @@
 {% extends 'mainmenu.html.twig' %}
 
-{% block title %}Hello MapController!
+{% block title %}
+ Map
 {% endblock %}
 
-{% block body %}
+
+{% block stylesheets %}
 	{{ parent() }}
+	 
+{% endblock %}	
 
 
-	
+{% block main_body %}
+ 
+	{{ parent() }}
+  <div class="principal">
+    <h1> MAP</h1>
+    <div id='mapcontainer' style="height:88%;width:70%"></div>
+  </div>
 
-        <div id='mapcontainer' style="height:60%;width:100%"></div>
-{% endblock %}
+
+{% endblock main_body %}
+
 
 
 {% block javascripts %}
@@ -30,4 +41,4 @@
     <script src="{{ asset('librerias/js/map/map.js') }}"></script>
   
 
-{% endblock %}
+{% endblock javascripts%}

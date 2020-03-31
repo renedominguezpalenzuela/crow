@@ -33,9 +33,7 @@ class AppFixtures extends Fixture
     
   
     public function load(ObjectManager $manager)
-    {
-        
-
+    {       
         //------------------------------------------------------------------------
         //Configuracion global
         //------------------------------------------------------------------------
@@ -45,7 +43,6 @@ class AppFixtures extends Fixture
         $config->setGoldIncrement(100000);
         $config->setTest_user('axl');
         $manager->persist($config);
-
 
         //------------------------------------------------------------------------
         //Creando los kingdoms
@@ -74,11 +71,11 @@ class AppFixtures extends Fixture
         //Creando los tipos de edificios
         //------------------------------------------------------------------------
         $buildings = array(
-            ['id'=>1, 'name'=>'Castle', 'cost'=>0, 'level'=>1, 'capacity'=>25000, 'defense'=>500000, 'minimalUnit'=>0],
-            ['id'=>2, 'name'=>'Castle', 'cost'=>10000000, 'level'=>2, 'capacity'=>25000, 'defense'=>1000000, 'minimalUnit'=>0],
-            ['id'=>3, 'name'=>'Barrack', 'cost'=>0, 'level'=>1, 'capacity'=>0, 'defense'=>0, 'minimalUnit'=>0],
-            ['id'=>4, 'name'=>'Camp', 'cost'=>1000000, 'level'=>1, 'capacity'=>5000, 'defense'=>50000, 'minimalUnit'=>1000],
-            ['id'=>5, 'name'=>'Camp', 'cost'=>2000000, 'level'=>2, 'capacity'=>10000, 'defense'=>100000, 'minimalUnit'=>0]           
+            ['id'=>1, 'name'=>'Castle', 'cost'=>0,'repairCost'=>1000, 'level'=>1, 'capacity'=>25000, 'defense'=>500000, 'minimalUnit'=>0],
+            ['id'=>2, 'name'=>'Castle', 'cost'=>10000000, 'repairCost'=>5000,'level'=>2, 'capacity'=>25000, 'defense'=>1000000, 'minimalUnit'=>0],
+            ['id'=>3, 'name'=>'Barrack', 'cost'=>0, 'repairCost'=>10, 'level'=>1, 'capacity'=>0, 'defense'=>0, 'minimalUnit'=>0],
+            ['id'=>4, 'name'=>'Camp', 'cost'=>1000000,'repairCost'=>1000, 'level'=>1, 'capacity'=>5000, 'defense'=>50000, 'minimalUnit'=>1000],
+            ['id'=>5, 'name'=>'Camp', 'cost'=>2000000, 'repairCost'=>1000,'level'=>2, 'capacity'=>10000, 'defense'=>100000, 'minimalUnit'=>0]           
         );
 
 //        ['id'=>6, 'name'=>'Squad', 'cost'=>0, 'level'=>1, 'capacity'=>0, 'defense'=>0, 'minimalUnit'=>0],
@@ -87,6 +84,7 @@ class AppFixtures extends Fixture
             $building = new BuildingType();
             $building->setName($unbuilding['name']);
             $building->setCost($unbuilding['cost']);
+            $building->setRepairCost($unbuilding['repairCost']);
             $building->setLevel($unbuilding['level']);
             $building->setCapacity($unbuilding['capacity']);
             $building->setDefense($unbuilding['defense']);
@@ -158,13 +156,8 @@ class AppFixtures extends Fixture
         $TiposdeEventos = $manager->getRepository(EventType::class)->findBy(['periodic' => true]);
 
 
-
-
         $FechaAhora = new \DateTime();
        // $fecha_ejecucion = new \DateTime();
-
-       
-       
       // echo "Time zone ". $FechaAhora->getTimezone()->getName();
 
         foreach ($TiposdeEventos as $uneventtype) {
@@ -175,12 +168,8 @@ class AppFixtures extends Fixture
             $eventos->setEventType($uneventtype);
             $eventos->setActive(true);
             $eventos->setTIni($FechaAhora);
-           // $eventos->setTLastCheck($FechaAhora);
-
-          
+              
             $eventos->setTejec($fecha_ejecucion);
-           
-           
            
             $manager->persist($eventos);   
         }

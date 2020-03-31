@@ -1,22 +1,383 @@
 {% extends 'mainmenu.html.twig' %}
 
-{% block title %}Hello PlayerArmyController!{% endblock %}
-
-{% block body %}
-{{ parent() }}
-
-
-   <h1> Player Army </h1>
+{% block title %}
+  Player Army
 {% endblock %}
+
+
+{% block stylesheets %}
+	{{ parent() }} 
+{% endblock %}	
+
+
+{% block main_body %}
+    <div class="principal container">
+         <div class="row lineaestrecha">
+            <div id="col1" class="col-sm-4">
+                  <div class="row">
+
+                     {# -- Main Castle -- #}
+                     <div class="card bg-dark ">
+                        <div class="card-header-primary">
+                              <div class="row">
+                                 <div class="col">
+                                    <h5 id="main_castle">Main Castle</h5>
+                                 </div>
+                                 <div class="col text-right">
+                                    <img src="{{ asset('img/buildings/building_barracks_darkstone_border.png') }}"
+                                          width="60em" class="img-fluid" alt="...">
+                                 </div>
+                              </div>
+                        </div>
+                        <div class="card-body">
+                              <div class="row">
+                                 <div class="col-6">
+                                    <table class="table-sm">
+                                          <tr>
+                                             <td>
+                                                <p>Building ID:
+                                                      <span id="castle_id"></span>
+                                                </p>
+                                             </td>
+                                          </tr>
+
+                                          <tr>
+                                             <td>
+                                                <p>Level:
+                                                      <span id="level-castle"></span>
+                                                </p>
+                                             </td>
+                                          </tr>
+                                          <tr>
+                                             <td>
+                                                <p>Defense:
+                                                      <span id="defense-castle"></span>
+                                                </p>
+                                             </td>
+                                          </tr>
+                                          <tr>
+                                             <td>
+                                                <p>Capacity:
+                                                      <span id="capacity-castle"></span>
+                                                </p>
+                                             </td>
+                                          </tr>
+                                    </table>
+                                 </div>
+                                 <div class="col-5 ">
+                                    <div class="text-center">
+                                          <h6>Upgrade cost:</h6>
+                                          <h6>$10,000,000</h6>
+                                    </div>
+                                    {# -- Boton Upgrade Castle-- #}
+                                    <div class="text-center">
+                                          <div class="btn btn-success upgrade_main_castle disabled" id="upgrade_main_castle" building_id="000">
+                                             <b>Upgrade</b>
+                                          </div>
+                                    </div>
+
+                                    <p></p>
+
+                                    <div class="text-center">
+                                          <h6>Repair cost:</h6>
+                                          <h6> $1,000 x Point</h6>
+                                          <input type="number" min="0" step="1000" pattern="d+" id="repair_main_castle_value"
+                                             class="form-control" placeholder="0">
+                                          <div class="text-center">
+                                             {# -- Boton Repair Castle -- #}
+                                             <div class="btn btn-success repair_main_castle disabled"
+                                                id="repair_main_castle" building_id="000">
+                                                <b>Repair</b></div>
+                                          </div>
+                                    </div>
+                                 </div>
+                              </div>
+
+
+                              <p><span class="subrayado">Troops</span></p>
+                              <table id="castle_troops" class="table-sm">
+
+                                 {#--- Contiene las tropas del castillo ---#}
+
+                              </table>
+
+
+                        </div> {#card body#}
+                     </div> {#Card 1#}
+
+                     {# -- Barraca -- #}
+
+                     <div class="card bg-dark ">
+                        <div class="card-header-primary">
+                              <h5>Barrack</h5>
+                        </div>
+                        <div class="card-body">
+                              <p><span class="subrayado">Troops</span></p>
+                              <table id="barrack_troops" class="table-sm">
+
+                                 {#--- Contiene las tropas de la barraca ---#}
+
+                              </table>
+                        </div>
+                     </div>
+
+                  </div>
+
+                  {#--- Contiene la lista de edificios ---#}
+                  <div class="row" id="lista_edificios">
+
+
+
+                  </div>
+
+            </div> {#Columna 1#}
+
+
+            {#Columna 2#}
+            <div id="col2" class="col-sm-7 ml-auto">
+                  <div class="row">
+
+
+                     {#Troops Movement#}
+
+                     <div class="card bg-dark ">
+                        <div class="card-header-primary">
+                              <h5>Troops Movement</h5>
+                        </div>
+
+
+                        <div class="card-body">
+                              <h5 class="card-title">Plans</h5>
+                              {#Planeando movimientos#}
+                              <div id="form_planning_troops">
+
+                              </div>
+
+
+                              <h5 class="card-title">Execution</h5>
+                              {#Lista de movimientos planeados#}
+                              <div>
+                                 <table id="execution_troops_movement">
+
+                                 </table>
+
+                              </div>
+
+                              {#
+                              <tr>
+                                    <td>
+                                          <p>Archers: 10 From: Castle to: Barrack
+                                          </p>
+                                    </td>
+                                    <td>
+
+                                    </td>
+                                 </tr>
+                              #}
+
+                              {#Enviar al servidor los movimientos#}
+                              {#poner notificacion y logs sobre los movimientos#}
+                              <button type="submit" class="btn btn-primary" id="boton_go">Go</button>
+
+                        </div>
+                     </div>
+
+
+                  </div> {# Linea #}
+
+
+                  <div class="row">
+                     {# -----------------  Tienda -------------- #}
+                     <div class="card bg-dark ">
+                        <div class="card-header-primary">
+                              <h5>Store</h5>
+                        </div>
+                        <div class="card-body">
+                              <div class="row">
+                                 <div class="col-3   text-center">
+
+                                    <H4>LIGHT CAVALRY</H4>
+                                    <img src="{{ asset('img/troops/Swordsman300x300.jpg') }}" width="70%">
+                                    <H5>50 cavalry </H4>
+                                          <H2><b>$100,000</b></H2>
+                                          <DIV class="btn btn-success hire_troops" id="hire-cavalry"><b>Hire</b> </DIV>
+                                 </div>
+
+                                 <div class="col-3   text-center">
+
+                                    <H4>AXEMEN BATTALION</H4>
+                                    <img src="{{ asset('img/troops/axeman300x300.jpg') }}" width="70%">
+                                    <H5>100 axemen</H4>
+                                          <H2><b>$20,000</b></H2>
+                                          <DIV class="btn btn-success hire_troops" id="hire-axemen"><b>Hire</b> </DIV>
+
+
+                                 </div>
+                                 <div class="col-3   text-center">
+
+                                    <H4>SPEARMEN BATTALION</H4>
+                                    <img src="{{ asset('img/troops/spearman300x300.jpg') }}" width="70%">
+                                    <H5>100 spearmen</H4>
+                                          <H2><b>$10,000</b></H2>
+                                          <DIV class="btn btn-success hire_troops" id="hire-spearmen"><b>Hire</b> </DIV>
+
+                                 </div>
+                                 <div class="col-3   text-center">
+
+                                    <H4>ARCHER BATTALION</H4>
+                                    <img src="{{ asset('img/troops/archer300x300.jpg') }}" width="70%">
+                                    <H5>100 archers</H4>
+                                          <H2><b>$5,000</b></H2>
+                                          <DIV class="btn btn-success hire_troops" id="hire-archer"><b>Hire</b> </DIV>
+
+
+                                 </div>
+                              </div>
+                        </div>
+                     </div>
+
+
+                     {# -----------------  Donar dinero -------------- #}
+                     <div class="card bg-dark ">
+                        <div class="card-header-primary">
+                              <h5>Donate money to kingdom funds</h5>
+                        </div>
+                        <div class="card-body">
+                              <div class="row">
+
+                                 <div class="col-1">
+                                    <h3 class="mb-2">$</h3>
+                                 </div>
+                                 <div class="col-5">
+                                    <h3>
+                                          <input type="number" min="0" step="1" pattern="d+" id="money"
+                                             class="form-control mb-2" placeholder="0">
+                                    </h3>
+                                 </div>
+
+                              </div>
+                              <div class="row justify-content-end">
+                                 <div class="col-9">
+                                    <DIV class="btn btn-success" id="donate-money"><b>Donate</b> </DIV>
+                                 </div>
+                              </div>
+
+                        </div>
+                     </div>
+
+
+                     <div class="card">
+                        <div class="card-header-primary">
+                              <h5>Chat</h5>
+                        </div>
+                        <div class="card-body">
+                              this is the chat area
+                        </div>
+                     </div>
+
+                     <div class="card">
+                        <div class="card-header-primary">
+                              <h5>Logs</h5>
+                        </div>
+                        <div class="card-body">
+                              this is the log area
+                        </div>
+                     </div>
+
+
+                  </div>
+
+
+
+            </div> {#Fin Columna 2#}
+
+         </div> {#Linea 1#}
+
+      
+   </div>
+{% endblock main_body%}
 
 
 {% block javascripts %}
-
+      <script src="{{asset('librerias/js/mainmenu/mainmenu.js')}}"></script>
+      <script src="{{asset('librerias/js/utiles/funcionesglobales.js')}}"></script>
+      <script src="{{asset('librerias/js/player_army/playerarmy.js')}}"></script>
+      <script src="{{asset('librerias/js/utiles/store.js')}}"></script>
+      <script src="{{asset('librerias/js/utiles/donatemoney.js')}}"></script>
+      <script src="{{asset('librerias/js/utiles/upgrade.js')}}"></script>
+      <script src="{{asset('librerias/js/utiles/repair.js')}}"></script>
+      
 <script>
 
-$('#main_body').addClass('fondo_login_page');
-</script>
-{% endblock %}
+
+// Variables definidas y seteadas en mainmenu.html.twig
+
+ let imagen_add = "{{ asset('img/iconos/add.png') }}";
+    let imagen_del = "{{ asset('img/iconos/delete.png') }}";
 
 
+
+   $.getJSON("{{path('list_user_resources')}}", function (data) {
+         
+      	const datos = data.datos;
+			const buildings = datos.buildings;
+			const  castillo = datos.castle;
+			const troopLocation = datos.troops_location;
+			const troops = datos.troops;
+			const team = datos.team;
+			const recursos = datos.resources;
+
+         //Dibujar datos de zona superior
+         dibujarDatosUsuarioHTML(team, recursos);
+	
+        //Datos del Castillo        
+        setCastilloData(castillo); 
+   
+        //Botones       
+        dibujarBotonesUpgradeRepair(team, recursos);
+                
+        //dibujar lista de edificios en html 
+        dibujarEdificiosenHTML(buildings);
+
+        //Preparar Arreglo de Tropas copiarlo en edificios (hacerlo en server?)
+   
+        setTroopOnBuildings(buildings, troopLocation);
+
+        //inicializando tropas en todos los edificios que no sean barrack 
+        dibujarTropasenHTML(buildings);
+
+        //Crear formulario de mover tropas
+
+        crearFormularioMoverTropas(troops, buildings, imagen_add, imagen_del);
+
+        //Funcionalidad del boton
+        //crear arreglo
+        //mostrar lista
+        crearFuncionalidadBotonFormularioPlanMovements(imagen_del);
+
+
+        //Funcionalidad del boton GO
+        let ruta_move_troops = "{{path('move_troops')}}";
+        crearBotonGo(ruta_move_troops);
+
+
+        let ruta_hire_troops = "{{path('hire_troops')}}";
+        boton_hire_troops(ruta_hire_troops);
+
+        let donar_funds = "{{path('donate_funds')}}";
+        boton_donate_money(donar_funds);
+
+
+        let upgrade = "{{path('upgrade')}}";
+        boton_upgrade_castle(upgrade);
+
+        let repair = "{{path('repair')}}";
+        boton_repair(repair);
+
+      });
+   
+
+    </script> 
+
+{% endblock javascripts%}
 

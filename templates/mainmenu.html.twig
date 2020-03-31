@@ -2,174 +2,137 @@
 
 {% block title %}
 	Hello MainPageController!
-
 {% endblock %}
+
 {% block stylesheets %}
-
 	<link rel="stylesheet" href="{{ asset('librerias/css/mainmenu.css') }}">
-{% endblock %}
-
+{% endblock %}	
 
 {% block body %}
+	<div class="contenedor">
+
+		<div class="top">
+			<div class="contenedor_top">
+			
+			  <div class="avatar"  style="text-align: center !important; z-index=12;" >
+			     <img id="avatar" class="img-circle" src="{{ asset('avatar/avatar.jpg') }}" alt="Avatar" style="width: 76%;"  >			  
+			  </div>
+
+			  <div class="avatar_borde" style="text-align: center !important; z-index=12;" >			
+				 <img id="avatar" src="{{ asset('img/borde_avatar.png') }}"  style="width: 80%;"   >			    
+			  </div>
+
+              {# ----------------- GOLD ---------------------#}
+			  <div class="user_gold_icon_area"  title="User Gold">
+				<img  class="user_gold_icon" src="{{ asset('img/menu/gold.png') }}" alt="User Gold"  >			
+			  </div>
+
+			  <div class="user_gold_area"  title="User Gold">
+			    <span id="user_gold">10000</span>
+			  </div>
+
+              {# ----------------- User Points ---------------------#}
+			  <div class="user_points_icon_area" title="User Points">
+				   <img   class="user_points_icon" src="{{ asset('img/menu/user_points.png') }}" alt="User Points">		   
+			  </div>
+
+			  <div class="user_points_area" title="User Points">
+			    <span id="user_points">10000</span>
+			  </div> 
+			 
+   		      {# ----------------- Kingdom Point Area ---------------------#}
+			  <div class="kingdom_point_icon_area" title="Kingdom Points">
+				   <img  class="kingdom_point_icon" src="{{ asset('img/menu/kingdom_points.png') }}" alt="Kingdom Points"  >			 
+			  </div> 
+
+			  <div class="kingdom_points_area" title="Kingdom Points">
+			      <span id="kingdom_point">10000</span>
+			  </div> 
+
+			  {# ----------------- Kingdom Gold Area ---------------------#}
+			  <div class="kingdom_gold_icon_area" title="Kingdom Gold">
+				   <img  class="kingdom_gold_icon" src="{{ asset('img/menu/gold_castle.png') }}" alt="Kingdom Gold"  >			 
+			  </div> 
+
+			  <div class="kingdom_gold_area" title="Kingdom Gold">
+			      <span id="kingdom_gold">10000</span>
+			  </div> 
 
 
-	{#MENU#}
-
-<nav class="navbar navbar-expand-lg navbar-dark ">
-
-
-	<div class="container  ">
-		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="true" aria-label="Toggle navigation">
-			<span class="navbar-toggler-icon"></span>
-		</button>
-
-		<div class="collapse navbar-collapse flex-column align-items-start" id="navbarCollapse">
-			<!-- navbar1 -->
-
-			<div class="navbar-nav mb-lg-0 ">
-				<a class="navbar-brand" href="#">
-					<img id="avatar" src="{{ asset('img/avatar.jpg') }}" alt="Avatar" style="width:30px;">
-				</a>
-				<small>
-					<table>
-						<tr>
-							<td>
-								<span>User :
-								</span>
-								<span>-
-								</span>
-							</td>
-							<td style="padding-right:20px"></td>
-
-							<td>
-								<span>Gold :
-								</span>
-								<span>0</span>
-							</td>
-							<td style="padding-right:20px"></td>
+			   {# ----------------- Kingdom Name ---------------------#}
+			  
+			
+			  
+			  	<div class="kingdom_name_area ">		   
+				   <span id="kingdom_name" class="letra_breathe_fire kingdom_name">---</span>
+			    </div> 
+                  <div class="kingdom_name_background">
+                      <img  class="kingdom_name_icon" src="{{ asset('img/menu/kingdom_name2.png') }}" alt="Kingdom Name"  >
+				</div>
+			  
+			  {# ----------------- Client Name ---------------------#}
+			  <div class="user_name_area">		   
+				   <span id="user_name" class="letra_breathe_fire user_name" >---</span>
+			  </div> 
 
 
-							<td>
-								<span>User Points :
-								</span>
-								<span>0</span>
-							</td>
-							<td style="padding-right:20px"></td>
-							<td>
-								<span>Kingdom :
-								</span>
-								<span>-</span>
-							</td>
-							<td style="padding-right:20px"></td>
-							<td>
-								<span>Kingdom Points :
-								</span>
-								<span>-</span>
-							</td>
-						</tr>
+			  {# ----------------- Administrator ---------------------#}
+			  <div class="admin_area" title="Administrator">		   
+				  <img  class="admin_icon" src="{{ asset('img/menu/settings3.png') }}" alt="Admin">  
+			  </div> 
 
+			   {# ----------------- User Profile ---------------------#}
+			  <div class="user_profile_area" title="User Profile">		   
+				  <img  class="user_profile_icon" src="{{ asset('img/menu/user_profile.png') }}" alt="User Profile">  
+			  </div> 
 
-					</table>
-				</small>
+			   {# ----------------- message ---------------------#}
+			  <div class="message_area" title="Messages">		   
+				  <img  class="message_icon" src="{{ asset('img/menu/messages.png') }}" alt="Message">  
+			  </div> 
 
-
-			</div>
-
-
-			<!-- navbar2 -->
-			{#	<ul class="navbar-nav mt-0 ">#}
-			<ul class="navbar-nav mt-0 mr-auto">
-
-				<li class="nav-item">
-					<a class="nav-link" href="{{url('player_army')}}">Player Army</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="{{url('kingdomcourt')}}">Kingdom Court</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="{{url('map')}}">World Map</a>
-				</li>
-				<li class="nav-item dropdown">
-					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-						Dropdown
-					</a>
-					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-						<a class="dropdown-item" href="#">Action</a>
-						<a class="dropdown-item" href="#">Another action</a>
-						<div class="dropdown-divider"></div>
-						<a class="dropdown-item" href="#">Something else here</a>
-					</div>
-				</li>
-
-
-			</ul>
+			</div>	
 		</div>
-	</div>
-
-
-</nav>
-
-
-
-
-
-{#
-<nav class="navbar navbar-expand-lg navbar-dark ">
-
-
- 
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-   
-      <li class="nav-item">
-        <a class="nav-link" href="{{url('player_army')}}">Player Army</a>
-      </li>
-            <li class="nav-item">
-        <a class="nav-link" href="{{url('login')}}">Kingdom Court</a>
-      </li>
-            <li class="nav-item">
-        <a class="nav-link" href="{{url('login')}}">World Map</a>
-      </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Dropdown
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Something else here</a>
-        </div>
-      </li>
 
 	
-    </ul>
-    
-  </div>
+		<div class="opciones">
+			<div class="contenedor_menu">				
+					<span class="opcion1 letra_breathe_fire">
+						<a class="underline-on-hover" href="{{url('player_army')}}">
+							Player Army
+						</a>
+					</span>
 
+					<span class="opcion2 letra_breathe_fire">
+				
+						<a class="underline-on-hover" href="{{url('map')}}">
+							World Map
+						</a>
+					</span>
 
+					<span class="opcion3 letra_breathe_fire">
+						<a class="underline-on-hover" href="{{url('kingdomcourt')}}">
+							Kingdom Court
+						</a>
+					</span>		
+			</div>
+		</div>
 
- 
- 
-</nav>
-#}
+		{% block main_body %}
+		{% endblock main_body%}
 
+		
+			
+	</div>
+	
+	
 
+{% endblock body %}
 
-{#	<button id="boton1" type="button" class="btn btn-success">Success</button>
-	<button id="boton2" type="button" class="btn btn-success">Success</button>
-	<button id="boton3" type="button" class="btn btn-success">Logout</button>#}
-
-{% endblock %}
 
 
 {% block javascripts %}
 
 
-	<script src="{{asset('librerias/js/mainmenu/mainmenu.js')}}"></script>
 
-{% endblock %}
+{% endblock javascripts %}

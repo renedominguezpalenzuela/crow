@@ -52,6 +52,11 @@ class BuildingType
      */
     private $image;
 
+    /**
+     * @ORM\Column(type="float", nullable=true)
+     */
+    private $repairCost;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -138,6 +143,18 @@ class BuildingType
     public function setImage(?string $image): self
     {
         $this->image = $image;
+
+        return $this;
+    }
+
+    public function getRepairCost(): ?float
+    {
+        return $this->repairCost;
+    }
+
+    public function setRepairCost(?float $repairCost): self
+    {
+        $this->repairCost = $repairCost;
 
         return $this;
     }
